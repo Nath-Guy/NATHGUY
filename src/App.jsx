@@ -4,7 +4,9 @@ import Button from "./components/ui/Button/Button";
 function App() {
   return (
     <div>
-      demat breizh
+      Demat Breizh
+      <Button bgColor="grey"></Button>
+      <Button bgColor="blue"></Button>
       <Button></Button>
     </div>
   );
