@@ -1,6 +1,7 @@
-const x=123;
-function Button(props) {
-    return <div className="Button">My Button</div>;
-}
+import styles from './Button.module.css'
+
+const Button = (props) => {
+  return <button className={styles.Button}>My Button</button>;
+};
 
 export default Button;
