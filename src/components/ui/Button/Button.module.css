@@ -6,3 +6,8 @@
     border: none;
     color: white;
 }
+
+.primary {
+    border-width: 2;
+    border-color: blue;
+}
