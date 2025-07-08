@@ -1,41 +1,24 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import Button from "./components/ui/Button/Button";
+import FlexHorizontalFirstGrow from "./components/layout/FlexHorizontalFirstGrow/FlexHorizontalFirstGrow";
+import FlexVerticalThirdGrow from "./components/layout/FlexVerticalThirdGrow/FlexVerticalThirdGrow";
+import MemeForm from "./components/MemeForm/MemeForm";
+import Header from "./components/ui/Header/Header";
+import MemeSvgViewer from "./components/ui/MemeSVGViewer/MemeSVGViewer";
+import Navbar from "./components/ui/Navbar/Navbar";
 
-function App() {
-  const [counter, setCounter] = useState(0);
-
-  // update counter en synchrone
-  useEffect(() => {
-    console.log(counter, 'modified')
-  }, [counter]);
-
+const App = () => {
   return (
-    <div style={{ textAlign: "center" }}>
-      <div> Valeur de counter : {counter}</div>
-      React App
-      <br />
-      <Button style={{ textDecoration: "underline" }}>Pouet</Button>
-      <Button bgColor="grey">Paf</Button>
-      <Button
-        onButtonClick={() => {
-          setCounter(counter - 1);
-          console.log("value counter = ", counter);
-        }}
-      >
-        -1
-      </Button>
-      <Button
-        bgColor="tomato"
-        onButtonClick={() => {
-          setCounter(counter + 1);
-          console.log("value counter = ", counter);
-        }}
-      >
-        +1
-      </Button>
+    <div className="App">
+      <FlexVerticalThirdGrow>
+        <Header></Header>
+        <Navbar></Navbar>
+        <FlexHorizontalFirstGrow>
+          <MemeSvgViewer />
+          <MemeForm data = 'test' />
+        </FlexHorizontalFirstGrow>
+      </FlexVerticalThirdGrow>
     </div>
   );
-}
+};
 
 export default App;
