@@ -1,16 +1,25 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import Button from "./components/ui/Button/Button";
 
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    console.log(counter, 'modified')
+  }, [counter]);
+
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
+      <div> Valeur de counter : {counter}</div>
       React App
       <br />
       <Button style={{ textDecoration: "underline" }}>Pouet</Button>
       <Button bgColor="grey">Paf</Button>
       <Button
         onButtonClick={(arg) => {
-          console.log("-1 clicked");
+          setCounter(counter - 1);
+          console.log("value counter = ", counter);
         }}
       >
         -1
@@ -18,7 +27,8 @@ function App() {
       <Button
         bgColor="tomato"
         onButtonClick={(arg) => {
-          console.log("+1 clicked");
+          setCounter(counter + 1);
+          console.log("value counter = ", counter);
         }}
       >
         +1
