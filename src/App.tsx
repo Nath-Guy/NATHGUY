@@ -7,8 +7,7 @@ function App() {
       React App
       <br />
       <Button
-        style={{ textDecoration: "underline", borderColor: "tomato" }}
-        className="primary"
+        style={{ textDecoration: "underline"}}
       >
         Pouet
       </Button>
