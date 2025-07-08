@@ -18,7 +18,7 @@ function App() {
       <Button style={{ textDecoration: "underline" }}>Pouet</Button>
       <Button bgColor="grey">Paf</Button>
       <Button
-        onButtonClick={(arg) => {
+        onButtonClick={() => {
           setCounter(counter - 1);
           console.log("value counter = ", counter);
         }}
@@ -27,7 +27,7 @@ function App() {
       </Button>
       <Button
         bgColor="tomato"
-        onButtonClick={(arg) => {
+        onButtonClick={() => {
           setCounter(counter + 1);
           console.log("value counter = ", counter);
         }}

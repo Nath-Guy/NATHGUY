@@ -8,7 +8,8 @@ interface IButtonProps {
   bgColor?: "grey" | "black" | "tomato";
   children: string | React.ReactElement | Array<React.ReactElement | string>;
   type?: "submit" | "reset" | "button";
-  onButtonClick?: Function;
+  onButtonClick?(): undefined;
+
 }
 
 const Button = ({
@@ -36,7 +37,7 @@ const Button = ({
         (clicked ? ' ' + styles.clicked : '')
       }
       type={type}
-      onClick={(evt) => {
+      onClick={() => {
         setClicked(true);
         if (undefined !== onButtonClick) {
           onButtonClick();
