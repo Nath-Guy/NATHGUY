@@ -1,30 +1,163 @@
+import type { MemeInterface } from "orsys-tjs-meme";
 import React, { useEffect, useState } from "react";
+import Button from "../ui/Button/Button";
 import styles from "./MemeForm.module.css";
 
 interface IMemeFormProps {
-  data: string
+  meme: MemeInterface;
+  onMemeChange(m: MemeInterface): undefined;
 }
 
-interface IMemeFormState {
-  value: number;
-}
+const MemeForm: React.FC<IMemeFormProps> = ({ meme, onMemeChange }) => {
+  const [internalMeme, setInternalMeme] = useState(meme);
 
-const memeFormInitialState = {value: 0};
+  function onStringInputChange(evt: React.FormEvent<HTMLInputElement>) {
+    const tmp = { ...internalMeme };
+    //@ts-ignore
+    tmp[evt.target.name] = evt.target.value;
+    setInternalMeme(tmp);
+  }
 
-const MemeForm: React.FC<IMemeFormProps> = ({data = ""}) => {
-  const [state, setstate] = useState<IMemeFormState>(
-    memeFormInitialState
-  );
+  function onNumberInputChange(evt: React.FormEvent<HTMLInputElement>) {
+    const tmp = { ...internalMeme };
+    //@ts-ignore
+    tmp[evt.target.name] = Number(evt.target.value);
+    setInternalMeme(tmp);
+  }
 
   useEffect(() => {
     return () => {
-      // demontage
+      onMemeChange(internalMeme);
     };
-  }, []);
+  }, [internalMeme]);
 
   return (
     <div className={styles.MemeForm} data-testid="MemeForm">
-      MemeForm Component props.data:{data}, state:{JSON.stringify(state)}
+      <form onSubmit={(evt) => {
+        evt.preventDefault();
+        onMemeChange(internalMeme);
+      }}>
+        <label htmlFor="titre">
+          <h1>Titre</h1>
+        </label>
+        <br />
+        <input
+          name="titre"
+          id="titre"
+          value={internalMeme.titre}
+          onInput={(evt) => {
+            //@ts-ignore
+            let value: string = evt.target.value;
+            value = value.toLowerCase();
+            //@ts-ignore
+            evt.target.value = value;
+            onStringInputChange(evt);
+          }}
+        />
+        <hr />
+        <label htmlFor="image">
+          <h2>Image</h2>
+        </label>
+        <br />
+        <select name="image" id="image">
+          <option value="-1">No image</option>
+        </select>
+        <hr />
+        <label htmlFor="text">
+          <h2>texte</h2>
+        </label>
+        <br />
+        <input
+          name="text"
+          id="text"
+          type="text"
+          value={internalMeme.text}
+          onInput={onStringInputChange}
+        />
+        <br />
+        <label htmlFor="x">
+          <h2 style={{ display: "inline" }}>x :</h2>
+        </label>
+        <input
+          className={styles.smallNumber}
+          name="x"
+          id="x"
+          type="number"
+          value={internalMeme.x}
+          onInput={onNumberInputChange}
+        />
+        <label htmlFor="y">
+          <h2 style={{ display: "inline" }}>y :</h2>
+        </label>
+        <input
+          className={styles.smallNumber}
+          name="y"
+          id="y"
+          type="number"
+          value={internalMeme.y}
+          onInput={onNumberInputChange}
+        />
+        <hr />
+        <br />
+        <h2>Decorations</h2>
+        <label htmlFor="color">
+          <h2 style={{ display: "inline" }}>color :</h2>
+        </label>
+        <input
+          name="color"
+          id="color"
+          type="color"
+          value={internalMeme.color}
+          onInput={onStringInputChange}
+        />
+        <br />
+        <label htmlFor="fontSize">
+          <h2 style={{ display: "inline" }}>font-size :</h2>
+        </label>
+        <input
+          className={styles.smallNumber}
+          name="fontSize"
+          id="fontSize"
+          type="number"
+          min="0"
+          value={internalMeme.fontSize}
+          onInput={onNumberInputChange}
+        />
+        px
+        <br />
+        <label htmlFor="fontWeight">
+          <h2 style={{ display: "inline" }}>font-weight :</h2>
+        </label>
+        <input
+          className={styles.smallNumber}
+          name="fontWeight"
+          id="fontWeight"
+          type="number"
+          min="100"
+          step="100"
+          max="900"
+          value={internalMeme.fontWeight}
+          onInput={onStringInputChange}
+        />
+        <br />
+        <input name="underline" id="underline" type="checkbox" />
+        &nbsp;
+        <label htmlFor="underline">
+          <h2 style={{ display: "inline" }}>underline</h2>
+        </label>
+        &nbsp;<h2 style={{ display: "inline" }}>/</h2>&nbsp;
+        <label htmlFor="italic">
+          <h2 style={{ display: "inline" }}>italic</h2>
+        </label>
+        &nbsp;
+        <input name="italic" id="italic" type="checkbox" />
+        <hr />
+        <br />
+        <Button type="reset">Reset</Button>
+        <Button type="submit" bgColor="grey">
+          Save
+        </Button>
+      </form>
     </div>
   );
 };
