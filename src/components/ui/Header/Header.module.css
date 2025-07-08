@@ -1,1 +1,15 @@
-.Header {}
+.Header {
+    font-size: xx-large;
+    text-decoration: underline black;
+    font-weight: 900;
+    padding-left: 1rem;
+}
+
+.meme {
+    color: green;
+}
+
+.js {
+    color: tomato;
+    font-style: italic;
+}
