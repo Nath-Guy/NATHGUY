@@ -5,6 +5,7 @@ import Button from "./components/ui/Button/Button";
 function App() {
   const [counter, setCounter] = useState(0);
 
+  // update counter en synchrone
   useEffect(() => {
     console.log(counter, 'modified')
   }, [counter]);
