@@ -8,6 +8,7 @@ interface IButtonProps {
   bgColor?: "grey" | "black" | "tomato";
   children: string | React.ReactElement | Array<ReactElement | string>;
   type?: "submit" | "reset" | "button";
+  onButtonClick?: Function;
 }
 
 const Button = ({
@@ -15,12 +16,18 @@ const Button = ({
   bgColor = "black",
   children,
   type = "button",
+  onButtonClick,
 }: IButtonProps) => {
   return (
     <button
       style={{ ...style, backgroundColor: bgColor }}
       className={styles.Button + " primary-color"}
       type={type}
+      onClick={(evt) => {
+        if (undefined !== onButtonClick) {
+          onButtonClick();
+        }
+      }}
     >
       {children}
     </button>

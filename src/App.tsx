@@ -6,20 +6,22 @@ function App() {
     <div>
       React App
       <br />
-      <Button
-        style={{ textDecoration: "underline"}}
-      >
-        Pouet
-      </Button>
+      <Button style={{ textDecoration: "underline" }}>Pouet</Button>
       <Button bgColor="grey">Paf</Button>
-      <Button>Plouf</Button>
-      <Button bgColor="tomato">
-        <div>
-          He<u>ll</u>o
-        </div>
-        <div>
-          He<u>ll</u>o
-        </div>
+      <Button
+        onButtonClick={(arg) => {
+          console.log("-1 clicked");
+        }}
+      >
+        -1
+      </Button>
+      <Button
+        bgColor="tomato"
+        onButtonClick={(arg) => {
+          console.log("+1 clicked");
+        }}
+      >
+        +1
       </Button>
     </div>
   );
