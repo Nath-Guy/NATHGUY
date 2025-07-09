@@ -1,6 +1,9 @@
 import React from "react";
 import { Container, Navbar as Nvb, Nav } from "react-bootstrap";
-import "../../../../node_modules/bootstrap/dist/css/bootstrap.css"
+
+//this import is not necessary when adding link on index.html
+// import "../../../../node_modules/bootstrap/dist/css/bootstrap.css"
+
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.js";
 
 const Navbar: React.FC = () => {
