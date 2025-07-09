@@ -7,12 +7,15 @@ import MemeForm from "./components/MemeForm/MemeForm.tsx";
 import Footer from "./components/ui/Footer/Footer.tsx";
 import Header from "./components/ui/Header/Header.tsx";
 import Navbar from "./components/ui/Navbar/Navbar.tsx";
+import { store } from "./store/store.ts";
 
 const App = () => {
   const [meme, setMeme] = useState(emptyMeme);
 
   //initial state of images : empty array
   const [images, setImages] = useState<Array<ImageInterface>>([]);
+
+  console.log(store);
 
   useEffect(() => {
     fetch("http://localhost:5679/images")
