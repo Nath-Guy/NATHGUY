@@ -32,9 +32,7 @@ const App = () => {
           <Navbar></Navbar>
           <FlexHorizontalFirstGrow>
             <MemeSVGViewer image={undefined} meme={meme} />
-            <MemeForm
-              images={images}
-            />
+            <MemeForm images={images} />
           </FlexHorizontalFirstGrow>
           <Footer></Footer>
         </FlexVerticalThirdGrow>
