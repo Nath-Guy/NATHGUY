@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from "react-router";
 
 function home() {
   return (
@@ -6,18 +6,12 @@ function home() {
       <h1>Bonjour</h1>
       <p>créez vos memes personnalisés</p>
       <p>
-            <a href='#'>New</a>
-            <a href='#'>Edit /0</a>
-            <a href='#'>Thumbnail</a>
-
+        <Link to="/editor">New</Link>
+        <Link to="/editor/0">Edit0</Link>
+        <Link to="/thumbnail">Thumbnail</Link>
       </p>
     </div>
   );
 }
 
 export default home;
-
-
-
-
-//rfce
