@@ -24,20 +24,19 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      <div> {JSON.stringify(images)}</div>
+
       <div className="App">
         <FlexVerticalThirdGrow>
           <Header></Header>
           <Navbar></Navbar>
           <FlexHorizontalFirstGrow>
             <MemeSVGViewer image={undefined} meme={meme} />
-            <MemeForm images={images} />
+            <MemeForm />
           </FlexHorizontalFirstGrow>
           <Footer></Footer>
         </FlexVerticalThirdGrow>
       </div>
-    </>
+
   );
 };
 
