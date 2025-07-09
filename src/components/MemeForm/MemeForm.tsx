@@ -1,10 +1,10 @@
-import type { MemeInterface, ImageInterface } from "orsys-tjs-meme";
+import type { ImageInterface, MemeInterface } from "orsys-tjs-meme";
 import React from "react";
 import Button from "../ui/Button/Button";
 import styles from "./MemeForm.module.css";
 
 interface IMemeFormProps {
-  images: Array<ImageInterface>
+  images: ImageInterface[]; //Array<ImageInterface>
   meme: MemeInterface;
   onMemeChange(m: MemeInterface): undefined;
 }
@@ -56,6 +56,13 @@ const MemeForm: React.FC<IMemeFormProps> = ({ images, meme, onMemeChange }) => {
         <br />
         <select name="image" id="image">
           <option value="-1">No image</option>
+          { //display images names
+            images.map((element, position) => (
+              <option key={"si" + position} value={element.id}>
+                {element.name}
+              </option>
+            ))
+          }
         </select>
         <hr />
         <label htmlFor="text">
