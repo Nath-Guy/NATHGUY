@@ -69,7 +69,7 @@ export default tseslint.config([
 ```
 
 ---------------------------------------------------------------------------------------------------
-TO RUN THE SERVER
-go to package.json and run script     "json": "json-server -p 5679 db/db.json"
+TO RUN THE SERVER : yarn json
+<!-- go to package.json and run script     "json": "json-server -p 5679 db/db.json" -->
 
 TO LAUNCH THE APP : yarn dev
