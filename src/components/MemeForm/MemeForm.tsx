@@ -9,8 +9,6 @@ interface IMemeFormProps {
 }
 
 const MemeForm: React.FC<IMemeFormProps> = ({ meme, onMemeChange }) => {
-  // const [internalMeme, setInternalMeme] = useState(meme);
-
   function onStringInputChange(evt: React.FormEvent<HTMLInputElement>) {
     const tmp = { ...meme };
     //@ts-ignore
@@ -25,18 +23,14 @@ const MemeForm: React.FC<IMemeFormProps> = ({ meme, onMemeChange }) => {
     onMemeChange(tmp);
   }
 
-  // useEffect(() => {
-  //   return () => {
-  //     onMemeChange(internalMeme);
-  //   };
-  // }, [internalMeme]);
-
   return (
     <div className={styles.MemeForm} data-testid="MemeForm">
-      <form onSubmit={(evt) => {
-        evt.preventDefault();
-        onMemeChange(meme);
-      }}>
+      <form
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          onMemeChange(meme);
+        }}
+      >
         <label htmlFor="titre">
           <h1>Titre</h1>
         </label>
@@ -140,7 +134,15 @@ const MemeForm: React.FC<IMemeFormProps> = ({ meme, onMemeChange }) => {
           onInput={onStringInputChange}
         />
         <br />
-        <input name="underline" id="underline" type="checkbox" />
+        <input
+          name="underline"
+          id="underline"
+          type="checkbox"
+          checked={meme.underline}
+          onChange={(evt) => {
+            onMemeChange({ ...meme, underline: evt.target.checked });
+          }}
+        />
         &nbsp;
         <label htmlFor="underline">
           <h2 style={{ display: "inline" }}>underline</h2>
@@ -150,7 +152,15 @@ const MemeForm: React.FC<IMemeFormProps> = ({ meme, onMemeChange }) => {
           <h2 style={{ display: "inline" }}>italic</h2>
         </label>
         &nbsp;
-        <input name="italic" id="italic" type="checkbox" />
+        <input
+          name="italic"
+          id="italic"
+          type="checkbox"
+          checked={meme.italic}
+          onChange={(evt) => {
+            onMemeChange({ ...meme, italic: evt.target.checked });
+          }}
+        />
         <hr />
         <br />
         <Button type="reset">Reset</Button>
