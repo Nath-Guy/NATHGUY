@@ -1,14 +1,15 @@
-import type { MemeInterface } from "orsys-tjs-meme";
+import type { MemeInterface, ImageInterface } from "orsys-tjs-meme";
 import React from "react";
 import Button from "../ui/Button/Button";
 import styles from "./MemeForm.module.css";
 
 interface IMemeFormProps {
+  images: Array<ImageInterface>
   meme: MemeInterface;
   onMemeChange(m: MemeInterface): undefined;
 }
 
-const MemeForm: React.FC<IMemeFormProps> = ({ meme, onMemeChange }) => {
+const MemeForm: React.FC<IMemeFormProps> = ({ images, meme, onMemeChange }) => {
   function onStringInputChange(evt: React.FormEvent<HTMLInputElement>) {
     const tmp = { ...meme };
     //@ts-ignore
