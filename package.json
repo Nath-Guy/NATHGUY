@@ -11,9 +11,11 @@
     "json": "json-server -p 5679 db/db.json"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
     "orsys-tjs-meme": "^1.0.3",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
